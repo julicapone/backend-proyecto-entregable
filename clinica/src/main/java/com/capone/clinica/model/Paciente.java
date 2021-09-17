@@ -74,4 +74,17 @@ public class Paciente {
     public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", apellido='" + apellido + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", dni='" + dni + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                ", fechaIngreso=" + fechaIngreso +
+                ", turnos=" + turnos +
+                '}';
+    }
 }
