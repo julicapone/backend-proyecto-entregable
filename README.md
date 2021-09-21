@@ -1,7 +1,17 @@
 # backend-proyecto-entregable
 
 ```
-Ejemplo de inserción http://localhost:8080/pacientes/
+Ejemplo de POST http://localhost:8080/odontologos/
+
+{
+    "apellido":"Holmes",
+    "nombre":"Sherlock",
+    "matricula":32
+}
+```
+```
+Ejemplo de POST http://localhost:8080/pacientes/
+
 {
     "apellido":"Watson",
     "nombre":"John",
@@ -10,12 +20,4 @@ Ejemplo de inserción http://localhost:8080/pacientes/
     "fechaIngreso":"2021-09-30"
 }
 ```
-```
-Ejemplo de inserción http://localhost:8080/odontologos/
 
-{
-    "apellido":"Holmes",
-    "nombre":"Sherlock",
-    "matricula":32
-}
-```
