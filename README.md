@@ -1,8 +1,7 @@
 # backend-proyecto-entregable
 
-Ejemplo de inserción http://localhost:8080/pacientes/
-
 ```
+Ejemplo de inserción http://localhost:8080/pacientes/
 {
     "apellido":"Watson",
     "nombre":"John",
