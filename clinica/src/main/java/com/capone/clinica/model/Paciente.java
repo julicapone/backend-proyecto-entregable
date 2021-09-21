@@ -2,6 +2,7 @@ package com.capone.clinica.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,8 +18,9 @@ public class Paciente {
     private String domicilio;
     private LocalDate fechaIngreso;
 
-    @OneToMany(mappedBy = "paciente")
-    private Set<Turno> turnos;
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_paciente")
+    private Set<Turno> turnos = new HashSet<>();
 
     public Paciente() {
     }

@@ -1,6 +1,7 @@
 package com.capone.clinica.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,8 @@ public class Odontologo {
     private String nombre;
     private Integer matricula;
 
-    @OneToMany(mappedBy = "odontologo")
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_odontologo")
     private Set<Turno> turnos;
 
     public Odontologo() {
