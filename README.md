@@ -21,7 +21,7 @@ Ejemplo de POST http://localhost:8080/pacientes/
 }
 ```
 ```
-Ejemplo de POST http://localhost:8080/pacientes/
+Ejemplo de POST http://localhost:8080/turnos/
 
 {
     "odontologo":{
