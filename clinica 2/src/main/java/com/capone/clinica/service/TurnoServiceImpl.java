@@ -25,7 +25,7 @@ public class TurnoServiceImpl implements IService<Turno>{
     @Override
     public Turno modificar(Turno turno) {
         Optional<Turno> turno1 = traerPorId(turno.getId());
-        turno1.get().setFecha(turno.getFecha());
+        turno1.get().setDate(turno.getDate());
         return turnoRepository.save(turno1.get());
     }
 

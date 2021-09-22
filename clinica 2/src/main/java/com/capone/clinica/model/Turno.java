@@ -16,15 +16,14 @@ public class Turno {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    @Column(nullable = false)
     private LocalDateTime fecha;
 
     @ManyToOne
-    @JoinColumn(name = "id_odontologo", nullable = false)
+    @JoinColumn(name = "id_odontologo", referencedColumnName = "id", nullable = false)
     Odontologo odontologo;
 
     @ManyToOne
-    @JoinColumn(name = "id_paciente", nullable = false)
+    @JoinColumn(name = "id_paciente", referencedColumnName = "id", nullable = false)
     Paciente paciente;
 
     public Turno() {
@@ -38,6 +37,14 @@ public class Turno {
 
     public Long getId() {
         return id;
+    }
+
+    public LocalDateTime getDate() {
+        return fecha;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.fecha = fecha;
     }
 
     public LocalDateTime getFecha() {
