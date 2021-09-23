@@ -1,6 +1,8 @@
 package com.capone.clinica.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
+@Getter
+@Setter
 public class Turno {
     @Id
     @SequenceGenerator(name = "turno_sequence", sequenceName = "turno_sequence", allocationSize = 1)

@@ -1,5 +1,8 @@
 package com.capone.clinica.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -7,6 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table
+@Getter
+@Setter
 public class Paciente {
     @Id
     @SequenceGenerator(name = "paciente_sequence", sequenceName = "paciente_sequence", allocationSize = 1)
@@ -19,7 +24,7 @@ public class Paciente {
     private LocalDate fechaIngreso;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
-    //@JoinColumn(name = "id_paciente")
+    @JoinColumn(name = "id_paciente")
     private Set<Turno> turnos = new HashSet<>();
 
     public Paciente() {

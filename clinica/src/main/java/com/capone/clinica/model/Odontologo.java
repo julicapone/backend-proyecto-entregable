@@ -1,11 +1,16 @@
 package com.capone.clinica.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table
+@Getter
+@Setter
 public class Odontologo {
     @Id
     @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
@@ -16,7 +21,7 @@ public class Odontologo {
     private Integer matricula;
 
     @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL)
-    //@JoinColumn(name = "id_odontologo")
+    @JoinColumn(name = "id_odontologo")
     private Set<Turno> turnos;
 
     public Odontologo() {
