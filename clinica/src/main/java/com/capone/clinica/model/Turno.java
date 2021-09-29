@@ -1,8 +1,11 @@
 package com.capone.clinica.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import lombok.Getter;
 import lombok.Setter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,47 +28,12 @@ public class Turno {
 
     @ManyToOne
     @JoinColumn(name = "id_odontologo", nullable = false)
-    Odontologo odontologo;
+    @JsonIdentityReference(alwaysAsId = true)
+    private Odontologo odontologo;
 
     @ManyToOne
     @JoinColumn(name = "id_paciente", nullable = false)
-    Paciente paciente;
-
-    public Turno() {
-    }
-
-    public Turno(LocalDateTime fecha, Odontologo odontologo, Paciente paciente) {
-        this.fecha = fecha;
-        this.odontologo = odontologo;
-        this.paciente = paciente;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-
-    public Odontologo getOdontologo() {
-        return odontologo;
-    }
-
-    public void setOdontologo(Odontologo odontologo) {
-        this.odontologo = odontologo;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
+    @JsonIdentityReference(alwaysAsId = true)
+    private Paciente paciente;
 }
 

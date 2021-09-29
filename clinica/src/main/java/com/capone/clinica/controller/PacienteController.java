@@ -25,7 +25,7 @@ public class PacienteController {
     }
 
     @PutMapping()
-    public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente paciente) throws Exception {
         ResponseEntity<Paciente> response = null;
         if (paciente.getId() != null && pacienteService.traerPorId(paciente.getId()).isPresent())
             response = ResponseEntity.ok(pacienteService.modificar(paciente));
@@ -35,7 +35,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Paciente> traerPaciente(@PathVariable Long id) {
+    public ResponseEntity<Paciente> traerPaciente(@PathVariable Long id) throws Exception {
         Paciente paciente = pacienteService.traerPorId(id).orElse(null);
         return ResponseEntity.ok(paciente);
     }

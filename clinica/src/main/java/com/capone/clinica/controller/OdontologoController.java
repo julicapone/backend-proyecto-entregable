@@ -14,6 +14,7 @@ import java.util.List;
 public class OdontologoController {
     private final IService<Odontologo> odontologoService;
 
+
     @Autowired
     public OdontologoController(IService<Odontologo> odontologoService) {
         this.odontologoService = odontologoService;
@@ -26,7 +27,7 @@ public class OdontologoController {
     }
 
     @PutMapping()
-    public ResponseEntity<Odontologo> actualizarOdontologo(@RequestBody Odontologo odontologo) {
+    public ResponseEntity<Odontologo> actualizarOdontologo(@RequestBody Odontologo odontologo) throws Exception {
         ResponseEntity<Odontologo> response = null;
         if (odontologo.getId() != null && odontologoService.traerPorId(odontologo.getId()).isPresent())
             response = ResponseEntity.ok(odontologoService.modificar(odontologo));
@@ -36,7 +37,7 @@ public class OdontologoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Odontologo> traerOdontologo(@PathVariable Long id) {
+    public ResponseEntity<Odontologo> traerOdontologo(@PathVariable Long id) throws Exception {
         Odontologo odontologo = odontologoService.traerPorId(id).orElse(null);
         return ResponseEntity.ok(odontologo);
     }
@@ -51,4 +52,10 @@ public class OdontologoController {
         odontologoService.eliminar(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/traerOdontólogoPorNombre")
+    public List<Odontologo> traerOdontologoporNombre(@RequestParam String apellido) {
+        return odontologoService.traerPorApellido(apellido);
+    }
+
 }

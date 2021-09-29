@@ -47,4 +47,9 @@ public class PacienteServiceImpl implements IService<Paciente>{
     public void eliminar(Long id) {
         pacienteRepository.deleteById(id);
     }
+
+    @Override
+    public List<Paciente> traerPorApellido(String apellido) {
+        return null;
+    }
 }

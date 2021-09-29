@@ -43,4 +43,9 @@ public class TurnoServiceImpl implements IService<Turno>{
     public void eliminar(Long id) {
         turnoRepository.deleteById(id);
     }
+
+    @Override
+    public List<Turno> traerPorApellido(String apellido) {
+        return null;
+    }
 }

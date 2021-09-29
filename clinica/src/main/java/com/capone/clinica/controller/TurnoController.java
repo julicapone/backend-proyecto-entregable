@@ -24,7 +24,7 @@ public class TurnoController {
     }
 
     @PutMapping()
-    public ResponseEntity<Turno> actualizarTurno(@RequestBody Turno turno) {
+    public ResponseEntity<Turno> actualizarTurno(@RequestBody Turno turno) throws Exception {
         ResponseEntity<Turno> response = null;
         if (turno.getId() != null && turnoService.traerPorId(turno.getId()).isPresent())
             response = ResponseEntity.ok(turnoService.modificar(turno));
@@ -34,7 +34,7 @@ public class TurnoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Turno> traerTurno(@PathVariable Long id) {
+    public ResponseEntity<Turno> traerTurno(@PathVariable Long id) throws Exception {
         Turno turno = turnoService.traerPorId(id).orElse(null);
         return ResponseEntity.ok(turno);
     }

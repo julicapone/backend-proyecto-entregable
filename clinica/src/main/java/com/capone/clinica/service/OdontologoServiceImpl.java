@@ -23,7 +23,7 @@ public class OdontologoServiceImpl implements IService<Odontologo> {
     }
 
     @Override
-    public Odontologo modificar(Odontologo odontologo) {
+    public Odontologo modificar(Odontologo odontologo) throws Exception {
         Optional<Odontologo> odontologo1 = traerPorId(odontologo.getId());
         odontologo1.get().setApellido(odontologo.getApellido());
         odontologo1.get().setNombre(odontologo.getNombre());
@@ -32,8 +32,13 @@ public class OdontologoServiceImpl implements IService<Odontologo> {
     }
 
     @Override
-    public Optional<Odontologo> traerPorId(Long id) {
-        return odontologoRepository.findById(id);
+    public Optional<Odontologo> traerPorId(Long id) throws Exception {
+        Optional<Odontologo> odontologoEncontrado = odontologoRepository.findById(id);
+        if(odontologoEncontrado.isPresent()) {
+            return odontologoRepository.findById(id);
+        } else {
+            throw new Exception("No existe un odontólogo con ese id.");
+        }
     }
 
     @Override
@@ -44,5 +49,11 @@ public class OdontologoServiceImpl implements IService<Odontologo> {
     @Override
     public void eliminar(Long id) {
         odontologoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Odontologo> traerPorApellido(String apellido) {
+        List<Odontologo> odontologos = odontologoRepository.traerPorApellido(apellido);
+        return odontologos;
     }
 }
